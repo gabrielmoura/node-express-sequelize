@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Teste de Página</title>
+    <script src="/app.js"></script>
+</head>
+<body>
+<%- include('layout/navbar') %>
+<div class="container">
+    <did class="card">
+        <div class="card-header">
+            <h1><%= pergunta.title %></h1>
+        </div>
+        <div class="card-body">
+            <p><%= pergunta.description %></p>
+        </div>
+    </did>
+    <hr style="width: 50%;text-align: center;">
+    <form method="post" action="/responder">
+        <h3>Responda</h3>
+        <textarea class="form-control" name="body"></textarea>
+        <input type="hidden" name="pergunta_id" value="<%= pergunta.id %>">
+        <button class="btn btn-primary">Responder</button>
+    </form>
+
+    <% if (respostas != undefined){ %>
+        <hr style="width: 50%;text-align: center;">
+        <h3>Respostas</h3>
+        <hr style="width: 50%;text-align: center;">
+
+
+        <% respostas.forEach(resp=>{ %>
+            <div class="card" style="margin-top:2vh;">
+                <div class="card-body">
+                    <%= resp.body %>
+                </div>
+            </div>
+        <% }) %>
+    <% } %>
+
+</div>
+</body>
+</html>
