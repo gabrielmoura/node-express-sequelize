@@ -1,8 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const port = 9000;
-
+const port = process.env.PORT??9000;
 
 //  Define EJS como view
 app.set('view engine', 'ejs');
@@ -15,9 +14,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 require('dotenv').config();
-
-perguntaodel=require('./model/Pergunta');
 const sequelize = require('./model/Database');
+
 sequelize.authenticate()
     .then(() => {
         console.log('BD');
