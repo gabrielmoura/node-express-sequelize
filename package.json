@@ -20,7 +20,9 @@
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
     "popper.js": "^1.16.1",
-    "sequelize": "^6.19.2"
+    "sequelize": "^6.19.2",
+    "slugify": "^1.6.5",
+    "tinymce": "^6.0.3"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",

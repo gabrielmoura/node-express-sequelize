@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Teste de Página</title>
+    <script src="/app.js"></script>
+</head>
+<body>
+<%- include('../../layout/navbar') %>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Novo Artigo</h3>
+        </div>
+        <div class="card-body">
+            <form method="post" action="/admin/article/store">
+                <label for="title">Titulo</label>
+                <input type="text" name="title" class="form-control" id="title">
+
+                <label for="category">Categoria</label>
+                <select name="category" class="form-control" id="category">
+                    <% categories.forEach((category)=>{ %>
+                        <option value="<%= category.id %>"><%= category.title %></option>
+                    <% }) %>
+                </select>
+
+                <label for="body">Artigo</label>
+                <textarea class="form-control" name="body" placeholder="Escreva Artigo" id="article"></textarea>
+
+                <button class="btn btn-success" type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+<script src="/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+        language: 'pt_BR',
+        selector: "#article",
+        plugins: [
+            'advlist autolink link image lists print preview hr searchreplace wordcount  fullscreen insertdatetime media save table paste emotions'
+        ]
+    });
+</script>
+</body>
+</html>

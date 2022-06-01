@@ -24,8 +24,11 @@ sequelize.authenticate()
 });
 
 //  Importa e Carrega Rotas em /
-routers = require('./route');
-app.use('/', routers);
+webRoutes = require('./routes/web');
+adminRoutes = require('./routes/admin');
+
+app.use('/', webRoutes);
+app.use('/admin/', adminRoutes);
 
 app.use(function (req, res, next) {
     res.status(404).send('Sorry cant find that!');

@@ -1,8 +1,8 @@
 var router = require('express').Router();
 
-const AnswersController = require('./controller/AnswersController')
-const QuestionController = require('./controller/QuestionController')
-const HomeController = require('./controller/HomeController');
+const AnswersController = require('../controller/AnswersController')
+const QuestionController = require('../controller/QuestionController')
+const HomeController = require('../controller/HomeController');
 
 router.get('/', HomeController.index);
 router.get('/pergunta/:id?', QuestionController.show);
