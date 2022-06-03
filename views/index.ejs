@@ -1,27 +1,29 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Teste de Página</title>
-    <script src="/app.js"></script>
-</head>
-<body>
-<%- include('layout/navbar') %>
-<div class="container">
+<%- include('layout/head') %>
+        <div class="col-md-12 content-page">
 
-    <h1>Perguntas</h1>
-    <a href="/perguntar" class="btn btn-success">Perguntar</a>
-    <% perguntas.forEach((pergunta)=>{ %>
-        <div class="card" style="margin-top:5vh;">
-            <div class="card-body">
-                <h3><%= pergunta.title %></h3>
+                <% articles.forEach((article)=>{ %>
+
+            <div class="col-md-12 ">
+                <div class="post-title">
+                    <a href="/article/<%= article.slug %>">
+                        <h2><%= article.title %> kkk</h2>
+                    </a>
+                </div>
+<!--                <div class="post-info">-->
+<!--                    <span>November 23, 2016 / by <a href="#" target="_blank">Alex Parker</a></span>-->
+<!--                </div>-->
+
+                <p class="post-description"><%- article.description??null %></p>
+                <a href="/article/<%= article.slug %>"
+                   class="button button-style button-anim fa fa-long-arrow-right"><span>Ler Matéria</span></a>
             </div>
-            <div class="caad-footer">
-                <a class="btn btn-primary" href="/pergunta/<%= pergunta.id %>">Responder</a>
-            </div>
+            <!-- Blog Post End -->
+
+            <%})%>
+
+                    <%- include('layout/pagination') %>
         </div>
 
-    <% }) %>
-</div>
-</body>
-</html>
+<%- include('layout/footer') %>
+
+

@@ -15,16 +15,28 @@ module.exports = {
         var page = req.params.page;
         var offset = 0;
         const limit = 4;
+        if (page == undefined) {
+            page = 1;
+        }
         if (isNaN(page) || page == 1) {
             offset = 0;
         } else {
-            offset = parseInt(page) * limit;
+            offset = (parseInt(page) * limit) - 1;
         }
         Article.findAndCountAll({
             limit: limit,
             offset: offset
         }).then(articles => {
-            res.json(articles);
+            var next = true;
+            if (offset + limit >= articles.count) {
+                next = false;
+            }
+
+            res.render('index', {
+                next: next,
+                page: page,
+                articles: articles.rows
+            });
         });
     }
 }

@@ -3,3 +3,5 @@ node_modules
 .idea
 isolate-*
 log
+mix-manifest.json
+*.bkp

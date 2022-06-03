@@ -3,6 +3,10 @@ const app = express();
 const bodyParser = require('body-parser');
 const port = process.env.PORT??9000;
 
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+const sessionStore=require('./sessionStore');
+
 //  Define EJS como view
 app.set('view engine', 'ejs');
 
@@ -14,6 +18,18 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 require('dotenv').config();
+app.use(cookieParser());
+app.use(session({
+    secret:process.env.KEY,
+    resave: false,
+    name:'express',
+    saveUninitialized: true,
+    store: sessionStore,
+    cookie:{
+        maxAge:1000*30
+    }
+}));
+
 const sequelize = require('./model/Database');
 
 sequelize.authenticate()

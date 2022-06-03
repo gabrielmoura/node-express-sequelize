@@ -7,6 +7,9 @@ module.exports = {
             res.render('admin/category/index', {categories});
         });
     },
+    create(req, res) {
+        res.render('admin/category/create');
+    },
     show(req, res) {
         var slug = req.params.slug;
 
@@ -14,12 +17,8 @@ module.exports = {
             where: {slug: slug},
             include: [{model: Article}]
         }).then((category) => {
-            console.log(category.article)
-            res.render('admin/category/show', {category,articles:category.articles});
+            res.render('admin/category/show', {category});
         });
-    },
-    create(req, res) {
-        res.render('admin/category/create');
     },
     store(req, res) {
         var title = req.body.title;

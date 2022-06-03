@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Teste de Página</title>
-    <script src="/app.js"></script>
-</head>
-<body>
-<%- include('../../layout/navbar') %>
+<%- include('../../layout/headAdmin') %>
 <div class="container">
     <h3>Artigos</h3>
     <a href="/admin/article/create" class="btn btn-success">Adicionar Artigo</a>
@@ -28,7 +20,7 @@
                 <td><%= article.title %></td>
                 <td><%= article.slug %></td>
                 <td><%= article.category.title %></td>
-                <td><%= article.body %></td>
+                <td><%- article.body %></td>
                 <td>
                     <a href="/admin/article/<%= article.slug %>" class="btn btn-success">Ver</a>
                     <a href="/admin/article/edit/<%= article.id %>" class="btn btn-warning">Editar</a>
@@ -42,5 +34,4 @@
         </tbody>
     </table>
 </div>
-</body>
-</html>
+<%- include('../../layout/footerAdmin') %>

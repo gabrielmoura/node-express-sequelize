@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Teste de Página</title>
-    <script src="/app.js"></script>
-</head>
-<body>
-<%- include('../../layout/navbar') %>
+<%- include('../../layout/headAdmin') %>
 <div class="container">
     <div class="card">
         <div class="card-header">
@@ -25,7 +17,7 @@
                 </select>
 
                 <label for="body">Artigo</label>
-                <textarea class="form-control" name="body" placeholder="Escreva Artigo" id="article"></textarea>
+                <textarea class="form-control tiny" name="body" placeholder="Escreva Artigo" id="article"></textarea>
 
                 <button class="btn btn-success" type="submit">Enviar</button>
             </form>
@@ -43,5 +35,4 @@
         ]
     });
 </script>
-</body>
-</html>
+<%- include('../../layout/footerAdmin') %>

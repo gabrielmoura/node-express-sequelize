@@ -14,6 +14,14 @@ const Article = conn.define('articles', {
     body: {
         type: DataTypes.TEXT,
         allowNull: false
+    },
+    description: {
+        type: DataTypes.TEXT,
+        allowNull: true
+    },
+    image: {
+        type: DataTypes.STRING,
+        allowNull: true
     }
 })
 
